@@ -1,0 +1,46 @@
+Efficient approach
+time complexity O(n), space comp O(n); 
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        
+       Map<Integer, Integer> map = new HashMap<>(); //hashmap approach ; 
+        for (int i = 0; i < nums.length; i++ ) {
+            int complement = target - nums[i]; //calculates complement algebraically
+            if(map.containsKey(complement)){ //if the complement has been seen before we return a new array that lists the pairs
+                return new int[] { map.get(complement), i};
+            }
+            map.put(nums[i], i); //if not we save nums[i] to be recalculated later. Storing it with an index keeps track of duplicate situations.
+        }
+        return null;  
+           
+       }
+
+Brute Force Approach:
+Time comp : O(n^2), space complexity O(1); 
+Thought Process: I want to essentially check every possible unique combination of i and j are possible such that I can find a combination where both integers add up to the sum
+Walkthrough: start by initializing a nested for loop such that I start at 0, and j starts at 1 and iterates the combination 0,1; 0,2; 0,3, etc. then repeat by increasing I and j until a two sum approach is reached. If there does not exist a two sum i return [0,0]
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        
+        for (int i = 0; i < nums.length; i++) { 
+            for (int j = 1; j < nums.length; j++) {
+                if (i !=j && nums [i] + nums [j] == target) {
+                    int [] result = {i,j};
+                    
+                    return result;
+                    
+                }                    
+                }
+            }
+        
+        
+        return new int[]{0,0};
+       
+        
+        
+    }
+   
+}
+
+
+   
