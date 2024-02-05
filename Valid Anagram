@@ -1,0 +1,31 @@
+
+/* Method 1 : HashMap
+Given two strings of equal length, we compare all the letters of string s with each letter of string t one at a time. 
+We remove letters (one count at a time) from string s that match with string t.
+if no match is found we return false. do this till all letters are removed and check at the end. 
+*/
+class Solution {
+    public boolean isAnagram(String s, String t) {
+        Map<Character, Integer> map = new HashMap<>();
+        if(!(s.length() == t.length())) { //both string lengths must be the same or its not an anagram.
+            return false;
+        }
+        for (char c : s.toCharArray()) { //map the characters and frequencies into a map by conv. string to array
+            map.put(c, map.getOrDefault(c, 0) + 1);
+        }
+        
+        for (char c : t.toCharArray()) {
+            if (!map.containsKey(c)) { //if the map doesnt contain the letter in string t, its not an anagram
+                return false;
+            }
+            map.put(c, map.get(c)-1); //now that we know the map contains the key we are going to deduct its frequncy
+            if (map.get(c) == 0) { //once that frequency reaches 0, we will remove the entry
+                map.remove(c);
+            }
+        }
+        
+        return (map.isEmpty()); //at the end we should have an empty hash map as we are removing all the letters in string s that match up with string t
+        
+        
+    }
+}
