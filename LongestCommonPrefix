@@ -1,0 +1,26 @@
+//check first chracter in all the strings are the same, if yes move to second, and to the nth , return all the characters that match
+class Solution {
+    public String longestCommonPrefix(String[] strs) {
+        String empty = "";
+       int lowestWordCount = strs[0].length();
+        if (strs.length == 1) { //if there is only one string, the most common prefix must be the entire string itself
+            return strs[0];
+        }
+        for (int word = 1; word < strs.length; word++) { //find the lowest word count so i know the max amount of words i can search/index through before going out of bounds
+            if (strs[word].length() < lowestWordCount) {
+                lowestWordCount = strs[word].length();
+            }
+        }
+        for (int index = 0; index < lowestWordCount; index++) { //indexes character
+            for (int index2 = 0; index2 < strs.length-1; index2++) { //indexes word
+                if((strs[index2].charAt(index) != strs[index2+1].charAt(index))) { /*if a point is met where the next possible character in the prefix string doesn't match through the whole array, we will just return what prefix string we currently have \*
+                    return empty;
+                    
+                }
+                 
+        }
+            empty += strs[0].charAt(index); //for simplicity we only need to evaluate the first word in comparison to the rest of the array. if a character matches within a string in the entirity of the array we will append that character as part of the prefix
+    }
+        return empty;
+}
+}
