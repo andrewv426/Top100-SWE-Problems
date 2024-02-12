@@ -1,0 +1,19 @@
+import java.util.Arrays;
+class Solution {
+
+    public boolean isPalindrome(String s) {
+        char [] palindrome = s.toLowerCase().toCharArray(); //converts string to array removing all lower case
+        char [] cleanedPalindrome = new char[palindrome.length]; //new array to remove non-alphanumeric
+        int cleanedIndex = 0;
+        for (int index = 0; index < palindrome.length; index++) {
+            if((Character.isLetterOrDigit(palindrome[index]))) { //check if character in initial palindrome is a letter/digit
+                cleanedPalindrome[cleanedIndex++] = palindrome[index]; //if it is then in our cleaned palindrome we will assign the character that is only letter/digit
+            }
+        }
+        char [] reversed = new char[cleanedPalindrome.length]; 
+        for (int index = 0; index < cleanedIndex; index++) { //reverse string
+            reversed[index] = cleanedPalindrome[cleanedIndex - 1 - index];
+        }
+        return Arrays.equals(cleanedPalindrome,reversed); //check if reversed = the cleaned palindrome
+    }
+}
