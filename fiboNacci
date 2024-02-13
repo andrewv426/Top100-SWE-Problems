@@ -1,0 +1,15 @@
+class Solution {
+    public int fib(int n) {
+        int [] fiboNacci = new int[n+1]; //create size of nth number + 1, the third fiboNacci is actually the 4th element in the array, 0, 1, 2, 3....
+        fiboNacci [0] = 0; 
+        if (n > 0) { //only can declare fiboNacci[1], if the size of the array is >=2
+             fiboNacci [1] = 1;
+        }
+        for (int index = 2; index < n+1; index++) {
+            fiboNacci [index] = fiboNacci[index-1] + fiboNacci[index-2]; //recursive approach 
+        }
+       
+        return fiboNacci[n];
+        
+    }
+}
