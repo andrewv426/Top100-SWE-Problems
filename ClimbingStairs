@@ -1,4 +1,4 @@
-//Brute force recursive appraoch
+//Brute force recursive approach ; EXCEEDS TIME FOR WHEN n is a large number, very inefficient for larger #'s
 
 class Solution {
     public int climbStairs(int n) {
@@ -7,5 +7,24 @@ class Solution {
         }
         return climbStairs(n-1) + climbStairs(n-2);
         
+    }
+}
+
+
+//dynamic programming approach; much better time complexity
+
+
+class Solution {
+    public int climbStairs(int n) {
+        int [] dp = new int[n+1]; 
+        if(n == 1) { //base case
+            return n;
+        }
+        dp[1] = 1;
+        dp[2] = 2;
+        for (int index = 3; index < dp.length; index++) { //solve all subproblems b4 main problem
+            dp[index] = dp[index-1] + dp[index-2];
+        }
+        return dp[n];
     }
 }
