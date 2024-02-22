@@ -1,0 +1,17 @@
+import java.lang.Math;
+class Solution {
+    public int minCostClimbingStairs(int[] cost) {
+        int n = cost.length;
+        int [] dP = new int[n]; //stores min cost to reach nth step;
+        
+        for (int index = 0; index < n; index++) {
+            if (index < 2) {
+                dP[index] = cost[index]; //at the beginning we're going to store both numbers since we dont know if we want to start at index 0 or index 1 
+            }
+            else {
+                dP[index] = cost[index] + Math.min(dP[index-1], dP[index-2]); //min cost to reach nth step is the cost of that step + minimum cost to reach the step before it or two steps before it (since u can go up 1 or 2 steps)
+            } 
+        }
+        return Math.min(dP[n-1], dP[n-2]); //we want to return the lowest value of the last two numbers in the array, since u can go 1 or 2 steps
+    }
+}
