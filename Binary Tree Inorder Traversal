@@ -1,0 +1,19 @@
+class Solution {
+    public List<Integer> inorderTraversal(TreeNode root) {
+        List <Integer> result = new ArrayList();
+        dfs(result, root);
+        return result;
+    }
+    void dfs (List <Integer> result, TreeNode node) { 
+        if(node != null) { //check if the node we're on has something
+            if(node.left != null) { //check left first
+                dfs(result, node.left); //go all the way down the left
+            }
+            result.add(node.val); //add after full left part of said node has been checked
+            if(node.right != null) { //move to right
+                dfs(result, node.right); //repeat recursion process for right node as if they were the initial node
+            }
+
+        }
+    }
+}
