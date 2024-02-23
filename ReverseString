@@ -1,0 +1,11 @@
+class Solution {
+    public void reverseString(char[] s) {
+        char temp = 'x'; //initialize a placeholder character
+        for (int index = 0; index < s.length - index; index++) {
+            temp = s[index]; //use swap method with double pointers
+            s[index] = s[s.length-index-1];
+            s[s.length-index-1] = temp;
+        }
+        
+    }
+}
