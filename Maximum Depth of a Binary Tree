@@ -1,0 +1,18 @@
+import java.lang.Math;
+
+class Solution {
+    public int maxDepth(TreeNode root) {
+        return dfs(root);
+    }
+
+    int dfs(TreeNode node) {
+        if (node == null) { //if there is no more depth to the tree we want to add 0 when it recurses
+            return 0;
+        }
+
+        int leftDepth = dfs(node.left); //otherwise we want to calculate the initial leftdepth
+        int rightDepth = dfs(node.right); //calculate initial right depth
+
+        return Math.max(leftDepth, rightDepth) + 1; //each time that the node is not null we want to add 1 to the depth
+    }
+}
